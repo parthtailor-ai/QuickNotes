@@ -1,0 +1,454 @@
+
+/* ===== Global Styles ===== */
+#root {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #f5f8ff;
+  color: #172554;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ===== Main App ===== */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Header ===== */
+.topbar {
+  height: 76px;
+  padding: 0 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 1px solid #e5ecf8;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #172554;
+  font-size: 22px;
+  font-weight: 750;
+  text-decoration: none;
+  letter-spacing: -0.6px;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #2563eb;
+  font-size: 23px;
+  box-shadow: 0 5px 12px #2563eb30;
+}
+
+.topbar-label {
+  color: #8290aa;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* ===== Main Content ===== */
+.main-content {
+  width: min(100% - 40px, 1000px);
+  margin: 0 auto;
+  flex: 1;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  padding: 65px 0 38px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  margin: 0;
+  color: #172554;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -1.8px;
+}
+
+.hero > p {
+  margin: 15px 0 0;
+  color: #71809b;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* ===== Note Composer ===== */
+.composer {
+  padding: 26px;
+  background: #ffffff;
+  border: 1px solid #e3eaf7;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px #1e40af08;
+}
+
+.section-heading h2,
+.notes-heading h2 {
+  margin: 0;
+  color: #172554;
+  font-size: 19px;
+  letter-spacing: -0.4px;
+}
+
+.section-heading p,
+.notes-heading p {
+  margin: 7px 0 0;
+  color: #8290aa;
+  font-size: 13px;
+}
+
+.note-form {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.note-form input {
+  flex: 1;
+  min-width: 0;
+  height: 50px;
+  padding: 0 16px;
+  color: #172554;
+  background: #f8faff;
+  border: 1px solid #dce5f5;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.note-form input::placeholder {
+  color: #a0abc0;
+}
+
+.note-form input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px #3b82f615;
+  background: #ffffff;
+}
+
+.add-button {
+  min-height: 50px;
+  padding: 0 21px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffffff;
+  background: #2563eb;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 650;
+  box-shadow: 0 5px 12px #2563eb25;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.add-button span {
+  font-size: 21px;
+  line-height: 1;
+}
+
+.add-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.add-button:active {
+  transform: translateY(0);
+}
+
+/* ===== Notes Section ===== */
+.notes-section {
+  padding: 42px 0 55px;
+}
+
+.notes-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 23px;
+}
+
+.note-count {
+  padding: 8px 12px;
+  color: #2563eb;
+  background: #e9f1ff;
+  border: 1px solid #d8e6ff;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ===== Notes Card Grid ===== */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.note-card {
+  min-width: 0;
+  padding: 21px;
+  background: #ffffff;
+  border: 1px solid #e3eaf7;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px #1e40af06;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  animation: cardAppear 0.3s ease both;
+}
+
+.note-card:hover {
+  transform: translateY(-4px);
+  border-color: #c4d7ff;
+  box-shadow: 0 12px 28px #1e40af12;
+}
+
+.note-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.note-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: #2563eb;
+  background: #edf4ff;
+  border-radius: 11px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.note-card h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: #24365b;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.note-card-caption {
+  margin: 12px 0 0;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.delete-button {
+  padding: 7px 10px;
+  color: #dc4545;
+  background: #fff5f5;
+  border: 1px solid #ffe0e0;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 650;
+  transition: background 0.2s, color 0.2s;
+}
+
+.delete-button:hover {
+  color: #ffffff;
+  background: #dc4545;
+  border-color: #dc4545;
+}
+
+/* ===== Empty and Status States ===== */
+.empty-state {
+  padding: 55px 20px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px dashed #cbd8ed;
+  border-radius: 16px;
+}
+
+.empty-icon {
+  width: 55px;
+  height: 55px;
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  color: #2563eb;
+  background: #edf4ff;
+  border-radius: 16px;
+  font-size: 30px;
+}
+
+.empty-state h3 {
+  margin: 0;
+  color: #24365b;
+  font-size: 17px;
+}
+
+.empty-state p,
+.status-message {
+  color: #8290aa;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.error {
+  padding: 12px 15px;
+  color: #b42318;
+  background: #fff1f0;
+  border: 1px solid #ffd6d2;
+  border-radius: 9px;
+}
+
+/* ===== Footer ===== */
+.footer {
+  padding: 24px 20px;
+  color: #8996ad;
+  background: #ffffff;
+  border-top: 1px solid #e5ecf8;
+  text-align: center;
+  font-size: 12px;
+}
+
+.footer span {
+  color: #2563eb;
+}
+
+/* ===== Card Animation ===== */
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 760px) {
+  .topbar {
+    height: 68px;
+    padding: 0 20px;
+  }
+
+  .topbar-label {
+    font-size: 9px;
+    letter-spacing: 0.8px;
+  }
+
+  .hero {
+    padding-top: 45px;
+  }
+
+  .notes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .main-content {
+    width: calc(100% - 28px);
+  }
+
+  .brand {
+    font-size: 19px;
+  }
+
+  .brand-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .topbar-label {
+    max-width: 110px;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  .hero {
+    padding: 38px 0 28px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .hero > p {
+    font-size: 14px;
+  }
+
+  .composer {
+    padding: 19px;
+    border-radius: 14px;
+  }
+
+  .note-form {
+    flex-direction: column;
+  }
+
+  .note-form input,
+  .add-button {
+    width: 100%;
+  }
+
+  .notes-section {
+    padding-top: 34px;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .note-card {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
